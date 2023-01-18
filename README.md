@@ -16,6 +16,8 @@ This datebase will contain:
 	- A-
 	- B+
 	- B-
+	- AB+
+	- AB-
 
 ## Future additions
 1. Patient address
