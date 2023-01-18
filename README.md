@@ -15,4 +15,8 @@ This datebase will contain:
 	- A+
 	- A-
 	- B+
-	
+
+## Future additions
+1. Patient address
+1. Patient Gender
+1. Medical Record Number
