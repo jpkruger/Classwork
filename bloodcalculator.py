@@ -46,7 +46,7 @@ def HDL_output(HDL_value, HDL_analy):
     
 def LDL_driver():
     LDL_in = LDL_input()
-    LDL analy = LDL_analysis(LDL_in)
+    LDL_analy = LDL_analysis(LDL_in)
     LDL_output(LDL_in,LDL_analy)
 
     
@@ -55,7 +55,7 @@ def LDL_input():
     LDL_value = int(LDL_value)
     return LDL_value
     
-def LDL_analysis(LDL_int)
+def LDL_analysis(LDL_int):
     if LDL_int < 130:
         ldlanswer = "Normal"
     elif 130 <= LDL_int <= 159:
@@ -66,7 +66,7 @@ def LDL_analysis(LDL_int)
         ldlanswer = "Very High"
     return ldlanswer
  
-def LDL_output(LDL_value, LDL_analy)
+def LDL_output(LDL_value, LDL_analy):
     print("The LDL result of {} is considered {}".format(LDL_value,LDL_analy))
     return
 
