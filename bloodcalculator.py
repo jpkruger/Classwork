@@ -74,6 +74,15 @@ def Total_input():
     Total_value = input("Enter the total cholesterol result:")
     Total_value = int(Total_value)
     return Total_value
+    
+def Total_analysis(Total_int):
+    if Total_int < 200:
+        totalanswer = "Normal"
+    elif 200 <= Total_int <= 239:
+        totalAnswer = "Borderline High"
+    else:
+        totalAnswer = "High"
+    return totalAnswer
 
 
 
