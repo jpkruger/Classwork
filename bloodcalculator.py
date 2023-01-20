@@ -69,6 +69,11 @@ def LDL_analysis(LDL_int):
 def LDL_output(LDL_value, LDL_analy):
     print("The LDL result of {} is considered {}".format(LDL_value,LDL_analy))
     return
+    
+def Total_input():
+    Total_value = input("Enter the total cholesterol result:")
+    Total_value = int(Total_value)
+    return Total_value
 
 
 
