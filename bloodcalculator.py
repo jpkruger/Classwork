@@ -88,10 +88,10 @@ def Total_analysis(Total_int):
     if Total_int < 200:
         totalanswer = "Normal"
     elif 200 <= Total_int <= 239:
-        totalAnswer = "Borderline High"
+        totalanswer = "Borderline High"
     else:
-        totalAnswer = "High"
-    return totalAnswer
+        totalanswer = "High"
+    return totalanswer
 
 def Total_output(Total_result, Total_ans):
     print("The Total Cholesterol result of {} is considered {}".format(Total_result,Total_ans))
