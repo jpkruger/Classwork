@@ -10,7 +10,12 @@ This is written in python.
 ## Specifications
 This datebase will contain:
 * Patient Name
+* Patient Medical Record Number
 * Patient Age
+* Patient Test Results
+
+
+
 * Patient Bloodtype
 	- A+
 	- A-
