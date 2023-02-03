@@ -19,18 +19,17 @@ def interface():
     print("Program ending")
 
 
-
 def HDL_driver():
     HDL_in = HDL_input()
     HDL_analy = HDL_analysis(HDL_in)
-    HDL_output(HDL_in,HDL_analy)
+    HDL_output(HDL_in, HDL_analy)
 
 
 def HDL_input():
     HDL_value = input("Enter the HDL result:")
     HDL_value = int(HDL_value)
     return HDL_value
-    
+
 
 def HDL_analysis(HDL_int):
     if HDL_int >= 60:
@@ -40,24 +39,25 @@ def HDL_analysis(HDL_int):
     else:
         answer = "Low"
     return answer
-    
-    
+
+
 def HDL_output(HDL_value, HDL_analy):
-    print("The HDL result of {} is considered {}".format(HDL_value,HDL_analy))
+    print("The HDL result of {} is considered {}".format(HDL_value, HDL_analy))
     return
-    
-    
+
+
 def LDL_driver():
     LDL_in = LDL_input()
     LDL_analy = LDL_analysis(LDL_in)
-    LDL_output(LDL_in,LDL_analy)
+    LDL_output(LDL_in, LDL_analy)
 
-    
+
 def LDL_input():
     LDL_value = input("Enter the LDL result:")
     LDL_value = int(LDL_value)
     return LDL_value
-    
+
+
 def LDL_analysis(LDL_int):
     if LDL_int < 130:
         ldlanswer = "Normal"
@@ -68,22 +68,25 @@ def LDL_analysis(LDL_int):
     else:
         ldlanswer = "Very High"
     return ldlanswer
- 
+
+
 def LDL_output(LDL_value, LDL_analy):
-    print("The LDL result of {} is considered {}".format(LDL_value,LDL_analy))
+    print("The LDL result of {} is considered {}".format(LDL_value, LDL_analy))
     return
-    
+
 
 def Total_driver():
     Total_in = Total_input()
     Total_analy = Total_analysis(Total_in)
-    Total_output(Total_in,Total_analy)
+    Total_output(Total_in, Total_analy)
+
 
 def Total_input():
     Total_value = input("Enter the total cholesterol result:")
     Total_value = int(Total_value)
     return Total_value
-    
+
+
 def Total_analysis(Total_int):
     if Total_int < 200:
         totalanswer = "Normal"
@@ -93,10 +96,12 @@ def Total_analysis(Total_int):
         totalanswer = "High"
     return totalanswer
 
+
 def Total_output(Total_result, Total_ans):
-    print("The Total Cholesterol result of {} is considered {}".format(Total_result,Total_ans))
+    print("The Total Cholesterol result of {} is considered {}"
+          .format(Total_result, Total_ans))
     return
 
 
-
-interface()
+if __name__ == "__main__":
+    interface()
