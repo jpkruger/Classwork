@@ -12,6 +12,7 @@ def dosing_driver():
     weight = weight_parse(user_weight)
     dosage_calculation(diagnosis, weight)
 
+
 def diagnosis_input():
     print("Day One Dosing Guidelines")
     print("")
@@ -22,6 +23,7 @@ def diagnosis_input():
     print("4 - Pharyngitis/tonsilitis")
     diagnosis = int(input("Enter a number: "))
     return diagnosis
+
 
 def weight_input():
     print("PATIENT WEIGHT")
@@ -40,7 +42,7 @@ def weight_parse(weight_input):
     return weight
 
 
-def dosage_calculation(diagnosis,weight):
+def dosage_calculation(diagnosis, weight):
     dosages_mg_per_kg = [30, 10, 10, 12]
     dosage_mg_per_kg = dosages_mg_per_kg[diagnosis-1]
     dosage_mg_first_day = weight * dosage_mg_per_kg
