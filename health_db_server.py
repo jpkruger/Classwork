@@ -26,8 +26,7 @@ def add_patient_to_db(id, name, blood_type):
 
 
 def add_test_to_db(id, test_name, test_result):
-    db[id]["tests"] = {"id": id, "test_name": test_name,
-                       "test_result": test_result}
+    db[id]["tests"].append([test_name, test_result])
     print(db)
 
 
@@ -92,6 +91,31 @@ def validate_input_data_generic(in_data, expected_keys, expected_type):
             return "Key {} is missing from input".format(key)
         if type(in_data[key]) is not value_type:
             return "Key {} has the incorrect value type".format(key)
+    return True
+
+
+@app.route("/get_results/<patient_id>", methods=["GET"])
+def get_get_results(patient_id):
+    answer, status = get_results_driver(patient_id)
+    return jsonify(answer), status
+
+
+def get_results_driver(patient_id):
+    validation = validate_patient_id_from_get(patient_id)
+    if validation is not True:
+        return validation, 400
+    patient = db[int(patient_id)]
+    return patient["tests"], 200
+
+
+def validate_patient_id_from_get(patient_id):
+    try:
+        patient_num = int(patient_id)
+    except ValueError:
+        return "Patient id should be an integer"
+    if does_patient_exist_in_db(patient_num) is False:
+        return "Patient id of {} does not exist in database"\
+            .format(patient_num)
     return True
 
 
