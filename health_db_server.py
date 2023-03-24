@@ -92,7 +92,6 @@ def does_patient_exist_in_db(id):
     return True
 
 
-
 def validate_input_data_generic(in_data, expected_keys, expected_type):
     if type(in_data) is not dict:
         return "Input is not a dictionary"
