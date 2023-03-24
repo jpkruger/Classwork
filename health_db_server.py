@@ -10,24 +10,32 @@ value: int
 
 """
 from flask import Flask, request, jsonify
-
-
-db = {}
+from pymodm import connect
+from PatientModel import Patient
+from pymodm import errors as pymodm_errors
+from secrets import mongodb_acct, mongdb_pswd
 
 
 app = Flask(__name__)
 
 
+def init_server():
+    connect("mongodb+srv://{}:{}@bme547.axizgtv"
+            ".mongodb.net/healthdb?retryWrites=true&w=majority"
+            .format(mongodb_acct, mongdb_pswd))
+
+
 def add_patient_to_db(id, name, blood_type):
-    new_patient = {"id": id, "name": name,
-                   "blood_type": blood_type, "tests": []}
-    db[id] = new_patient
-    print(db)
+    new_patient = Patient(patient_id=id, patient_name=name,
+                          blood_type=blood_type)
+    saved_patient = new_patient.save()
+    return saved_patient
 
 
 def add_test_to_db(id, test_name, test_result):
-    db[id]["tests"].append([test_name, test_result])
-    print(db)
+    x = Patient.objects.raw({"_id": id}).first()
+    x.tests.append((test_name, test_result))
+    x.save()
 
 
 @app.route("/new_patient", methods=["POST"])
@@ -77,10 +85,11 @@ def add_test_driver(in_data):
 
 
 def does_patient_exist_in_db(id):
-    if id in db:
-        return True
-    else:
+    try:
+        db_item = Patient.objects.raw({"_id": id}).first()
+    except pymodm_errors.DoesNotExist:
         return False
+    return True
 
 
 def validate_input_data_generic(in_data, expected_keys, expected_type):
@@ -101,11 +110,12 @@ def get_get_results(patient_id):
 
 
 def get_results_driver(patient_id):
-    validation = validate_patient_id_from_get(patient_id)
-    if validation is not True:
-        return validation, 400
-    patient = db[int(patient_id)]
-    return patient["tests"], 200
+    # validation = validate_patient_id_from_get(patient_id)
+    # if validation is not True:
+    #     return validation, 400
+    # patient = db[int(patient_id)]
+    # return patient["tests"], 200
+    pass
 
 
 def validate_patient_id_from_get(patient_id):
@@ -120,4 +130,5 @@ def validate_patient_id_from_get(patient_id):
 
 
 if __name__ == '__main__':
+    init_server()
     app.run()
