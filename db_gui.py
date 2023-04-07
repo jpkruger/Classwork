@@ -3,6 +3,11 @@ from tkinter import ttk
 import requests
 from PIL import Image, ImageTk
 from tkinter import filedialog
+import base64
+import io
+import matplotlib.image as mpimg
+from matplotlib import pyplot as plt
+from skimage.io import imsave
 
 
 def create_blood_string(blood_letter, rh):
