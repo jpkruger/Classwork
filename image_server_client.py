@@ -18,7 +18,7 @@ def set_up_window():
 
     def upload_image():
         nonlocal filename
-        if filename == None:
+        if filename is None:
             messagebox.showerror("ERROR", message="No File Has Been Selected")
             return
         if filename == "":
