@@ -5,3 +5,6 @@ requests
 flask
 pymodm
 dnspython
+Pillow
+matplotlib
+scikit-image
